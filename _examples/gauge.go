@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"log"
 
-	ui "github.com/gizak/termui/v3"
-	"github.com/gizak/termui/v3/widgets"
+	ui "github.com/HankiGreed/termui/v3"
+	"github.com/HankiGreed/termui/v3/widgets"
 )
 
 func main() {

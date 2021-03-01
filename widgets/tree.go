@@ -5,7 +5,7 @@ import (
 	"image"
 	"strings"
 
-	. "github.com/gizak/termui/v3"
+	. "github.com/HankiGreed/termui/v3"
 	rw "github.com/mattn/go-runewidth"
 )
 
@@ -17,8 +17,8 @@ type TreeNode struct {
 	Expanded bool
 	Nodes    []*TreeNode
 
-	// level stores the node level in the tree.
-	level int
+	// Level stores the node Level in the tree.
+	Level int
 }
 
 // TreeWalkFn is a function used for walking a Tree.
@@ -28,9 +28,9 @@ type TreeWalkFn func(*TreeNode) bool
 func (self *TreeNode) parseStyles(style Style) []Cell {
 	var sb strings.Builder
 	if len(self.Nodes) == 0 {
-		sb.WriteString(strings.Repeat(treeIndent, self.level+1))
+		sb.WriteString(strings.Repeat(treeIndent, self.Level+1))
 	} else {
-		sb.WriteString(strings.Repeat(treeIndent, self.level))
+		sb.WriteString(strings.Repeat(treeIndent, self.Level))
 		if self.Expanded {
 			sb.WriteRune(Theme.Tree.Expanded)
 		} else {
@@ -80,7 +80,7 @@ func (self *Tree) prepareNodes() {
 
 func (self *Tree) prepareNode(node *TreeNode, level int) {
 	self.rows = append(self.rows, node)
-	node.level = level
+	node.Level = level
 
 	if node.Expanded {
 		for _, n := range node.Nodes {
